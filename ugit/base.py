@@ -72,3 +72,10 @@ def _empty_current_directory ():
                 # Deletion might fail if the directory contains ignored files,
                 # so it's OK
                 pass
+
+def commit(message):
+    commit = f'tree {write_tree()}\n'
+    commit += '\n'
+    commit += f'{message}\n'
+
+    return data.hash_object(commit.encode(), 'commit')
